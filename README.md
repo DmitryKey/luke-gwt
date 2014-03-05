@@ -8,7 +8,9 @@ In order to compile and run you will need at least gwt 2.5.2 (tested) + gwt plug
 The first option (tried):
 
 $ svn co http://gwt-maven.googlecode.com/svn/trunk/maven-googlewebtoolkit2-plugin/ maven-googlewebtoolkit2-plugin
+
 $ cd maven-googlewebtoolkit2-plugin
+
 $ mvn install
 
 History:
