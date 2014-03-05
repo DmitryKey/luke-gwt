@@ -32,4 +32,3 @@ One technical difficulty with older versions of Luke (based on thinlet UI) tackl
 Be able to load and study Lucene index from the server remotely, rather than require the index to always be local to the tool.
 This has been implemented using the custom servlet for listing remote directory. The rest of mechanics is taken from Luke.
 
-
