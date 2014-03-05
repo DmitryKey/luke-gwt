@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.totsp.gwt</groupId>
+	<artifactId>maven-googlewebtoolkit2-plugin</artifactId>
+	<packaging>maven-plugin</packaging>
+	<version>2.0-b3</version>
+	<description>Maven 2 Plugin for the Google Web Toolkit</description>
+	<name>Maven 2 Plugin for the Google Web Toolkit</name>
+	<url>http://code.google.com/p/gwt-maven</url>
+	<repositories>
+        <repository>
+            <id>gwt-maven</id>
+            <url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo/</url>
+        </repository>
+    </repositories>
+	<parent>
+		<groupId>com.totsp.gwt</groupId>
+		<artifactId>maven-googlewebtoolkit</artifactId>
+		<version>1.0.1</version>
+	</parent>	
+	<mailingLists>
+        <mailingList>
+            <name>GWT-Maven Google Group</name>
+            <archive>http://groups.google.com/group/gwt-maven/</archive>
+        </mailingList>
+    </mailingLists>
+    <issueManagement>
+        <system>Google Code</system>
+        <url>http://code.google.com/p/gwt-maven/issues/list</url>
+    </issueManagement>  
+    <scm>
+        <connection>scm:svn:http://gwt-maven.googlecode.com/svn/trunk</connection>
+        <developerConnection>scm:svn:https://gwt-maven.googlecode.com/svn/trunk</developerConnection>
+        <url>http://gwt-maven.googlecode.com/svn/trunk</url>
+    </scm>      
+    <developers>
+        <developer>
+            <id>ccollins</id>
+            <name>Charlie Collins</name>
+            <url>http://www.screaming-penguin.com</url>
+            <organization>Temple of the Screaming Penguin (TotSP)</organization>
+        </developer>
+        <developer>
+            <id>cooper</id>
+            <name>Robert Cooper</name>
+        </developer>
+        <developer>
+            <id>willpugh</id>
+            <name>Will Pugh</name>
+        </developer>
+        <developer>
+            <id>mnasato</id>
+            <name>Mirko Nasato</name>
+        </developer>
+    </developers>
+    <contributors>
+    	<contributor>
+    	    <name>Many people have helped - see the mailing list.</name>
+    	</contributor>
+    </contributors>	
+	<licenses>
+		<license>
+			<name>GNU Lesser General Public License 3.0</name>
+			<url>LICENSE.txt</url>
+		</license>
+	</licenses>
+	<distributionManagement>
+		<!--repository>
+			<id>local.repo</id>
+			<name>file repository to svn</name>
+			<url>file://${basedir}/../mavenrepo</url>
+		</repository-->
+                <repository>
+            <id>archiva.internal</id>
+            <name>Internal Release Repository</name>
+            <url>dav:http://cvs.reachcall.com/archiva/repository/internal/</url>
+        </repository>
+	</distributionManagement>        
+	<dependencies>
+		<dependency>
+			<groupId>com.totsp.gwt</groupId>
+			<artifactId>maven-googlewebtoolkit-support</artifactId>
+			<version>1.6.2</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>googlewebtoolkit-beanmapping</artifactId>
+					<groupId>com.totsp.gwt</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-plugin-api</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.plexus</groupId>
+			<artifactId>plexus-utils</artifactId>
+			<version>1.4.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-project</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-artifact</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-model</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.4</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-plugin-plugin</artifactId>
+				<configuration>
+					<goalPrefix>gwt-maven</goalPrefix>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<outputDirectory>targetide</outputDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-plugin-plugin</artifactId>
+				<version>2.3</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.1</version>
+			</plugin>
+			<!--
+				<plugin> <groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId> <version>2.3</version>
+				</plugin>
+			-->
+		</plugins>
+	</reporting>
+	
+</project>

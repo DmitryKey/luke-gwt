@@ -1,0 +1,45 @@
+GWT-Maven (maven-googlewebtoolkit2-plugin)
+
+
+ GWT-Maven is a plugin to provide support for Google Web Toolkit projects, including
+ running the GWT developer tools (the compiler and shell) and performing support operations to help
+ developers make GWT fit more closely in with their standard JEE web application
+ development (debugging, managing the emebedded server, running noserver, merging web.xml, generating I18N interfaces, generating client beans, and more).
+ 
+ NOTE: This plugin is being maintained, but new features are NOT being added here. We are trying to stabilize and then freeze development
+ on this plugin so we (the GWT-Maven developers) can focus on helping support the Codehaus GWT Maven plugin (http://mojo.codehaus.org/gwt-maven-plugin/).
+ The Codehaus GWT Maven plugin is NOT YET sanctioned or approved or recommended by us, because we aren't yet familiar with it. 
+ We have however agreed to join that project and make sure it has all the same goals and features (and docs, etc) as this one. 
+ We have yet to begin that work though, because we can't get started there until this plugin is stable and frozen (too much to juggle to work on both simultaneously). 
+ AS SOON AS THE MERGE *AND SIGN OFF* AT CODEHAUS HAS HAPPENED, THIS DOCUMENTATION WILL BE UPDATED TO REFLECT THAT.
+ 
+* Goals, Setup, and Examples
+
+  To provide you with better understanding of some usages of GWT-Maven,
+  you can take a look at the following goals, setup, and examples information:
+
+  ** {{{plugin-info.html}Goals and Parameters}} (*Note* goal prefix is "gwt-maven" currently, not "googlewebtoolkit2" as this auto generated page reports)
+
+  ** {{{setup.html}Setup}}
+  
+  ** {{{examples.html}Examples}}
+  
+  ** {{{usage.html}General Usage, and Tips}}
+  
+* More Details on Specific Goals and Features
+
+  ** {{{testing.html}Testing Support}} 
+  
+  ** {{{tomcatlite.html}Tomcat Configuration}}  
+  
+  ** {{{archetype.html}Using the Archetype}}  
+  
+* More General Information
+
+  ** {{{http://code.google.com/p/gwt-maven/}Google Code hosting page}}
+  
+  ** {{{http://groups.google.com/group/gwt-maven/}Mailing list}}
+  
+  ** {{{http://code.google.com/p/gwt-maven/issues/list}Issue tracker}}
+  
+  ** {{{http://code.google.com/p/gwt-maven/wiki/M2FAQ}FAQ}}

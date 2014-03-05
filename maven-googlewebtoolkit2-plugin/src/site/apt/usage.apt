@@ -1,0 +1,44 @@
+GWT-Maven General Usage and Tips
+
+  Basic usage, and things to be aware of that can help you in your day to day usage of GWT-Maven. 
+
+* Basic Goals
+
+  The fastest way to get started is to use the  
+  {{{archetype.html}archetype}}, see the one-liner there.
+
+  Run the GWTShell - <<mvn clean gwt-maven:gwt>> 
+
+  Build a WAR - <<mvn clean gwt-maven install>>
+  
+* Prefix
+  <<gwt-maven>>
+  
+  This plugins prefix is now "gwt-maven" (it used to be just "gwt", but we ran into a conflict with the Codehaus GWT plugin - long story).
+
+* Goals and parameters
+
+  Like any good Maven 2 Plugin, the generated plugin docs contain documentation on all the goals and configuration parameters.
+  See the {{{plugin-info.html}goals}} docs (also available from the left hand menu).
+
+* Skipping compile
+ <<-Dgoogle.webtoolkit.compileSkip=true>>
+ 
+ If you want to skip the GWT compilation step for any reason (which, for example, makes the shell launch a lot faster after
+ you know you have already compiled), you can using the google.webtoolkit.compileSkip system property.
+ 
+* Skipping GWT tests
+ <<-Dgoogle.webtoolkit.testSkip=true>>
+ 
+ Also see the {{{testing.html}testing docs}}  for a lot more testing information.
+ 
+* What do do if you get stuck or confused
+
+  ** {{{http://code.google.com/p/gwt-maven/wiki/M2FAQ}GWT-Maven M2 FAQ}}
+  
+  It has more up to date tips and hints than this static documentation.
+
+  ** {{{http://groups.google.com/group/gwt-maven}GWT-Maven Google Group}}
+  
+  Many people keep an eye on that and we will generally respond quickly.
+ 

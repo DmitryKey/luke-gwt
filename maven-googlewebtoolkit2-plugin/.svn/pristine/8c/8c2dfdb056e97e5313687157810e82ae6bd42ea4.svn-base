@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<!--  GWT-Maven example POM with google.webtoolkit.home SET (GWT already installed on machine) -->
+	<!--  For this to work you have to have environment variable GWT_HOME set, or you have to change "systemPath" and "gwtHome" here. -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.totsp.gwt</groupId>
+	<artifactId>maven-gwt-sample-withhome</artifactId>
+	<packaging>war</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>maven-gwt-sample-withhome</name>
+	
+	<!--  include pluginRepository and repository for GWT-Maven -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>gwt-maven-plugins</id>
+            <url>
+                http://gwt-maven.googlecode.com/svn/trunk/mavenrepo/
+            </url>
+        </pluginRepository>
+    </pluginRepositories>    
+    <repositories>        
+        <repository>
+            <id>gwt-maven</id>
+            <url>
+                http://gwt-maven.googlecode.com/svn/trunk/mavenrepo/
+            </url>
+        </repository>
+    </repositories>
+    
+	<!--  convenience to define GWT version in one place -->
+	<properties>
+	   <gwtVersion>1.5.3</gwtVersion>
+	</properties>
+	
+	<dependencies>
+	    <!--  GWT deps -->
+	    <!--  you still need gwt as deps, so that standard maven goals will work (like compile)
+	    NOTE that the dev and user jars can be system scope with "systemPath", so that are the same as used via gwtHome by GWT-Maven) -->
+		<dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-servlet</artifactId>
+            <version>${gwtVersion}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+            <version>${gwtVersion}</version>
+            <scope>system</scope>
+            <systemPath>${env.GWT_HOME}/gwt-user.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <version>${gwtVersion}</version>
+            <classifier>${platform}</classifier>
+            <scope>system</scope>
+            <systemPath>${env.GWT_HOME}/gwt-dev-${platform}.jar</systemPath>
+        </dependency>  		
+		
+		<dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.1</version>
+            <scope>test</scope>
+        </dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+		    <!--  configure the GWT-Maven plugin -->
+			<plugin>
+				<groupId>com.totsp.gwt</groupId>
+				<artifactId>maven-googlewebtoolkit2-plugin</artifactId>
+				<version>2.0-RC1</version>
+				<configuration>
+				    <gwtHome>${env.GWT_HOME}</gwtHome>
+					<logLevel>INFO</logLevel>
+					<compileTargets>
+						<value>com.totsp.sample.Application</value>
+					</compileTargets>
+					<runTarget>com.totsp.sample.Application/Application.html</runTarget>
+					<style>DETAILED</style>
+					<noServer>false</noServer>
+					<extraJvmArgs>-Xmx512m</extraJvmArgs>
+					<i18nConstantsWithLookup>false</i18nConstantsWithLookup>
+					<i18nConstantsNames>
+					   <value>com.totsp.sample.client.AppConstants</value>
+					</i18nConstantsNames>
+					<i18nMessagesNames>
+					   <value>com.totsp.sample.client.AppMessages</value>
+					</i18nMessagesNames>
+					<gwtVersion>${gwtVersion}</gwtVersion>					
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>mergewebxml</goal>
+							<goal>i18n</goal>                            
+							<goal>compile</goal>							
+                            <goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>			
+			<!--
+				If you want to use the target/web.xml file mergewebxml produces,
+				tell the war plugin to use it
+			-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<webXml>target/web.xml</webXml>
+					<warSourceExcludes>.gwt-tmp/**</warSourceExcludes>
+				</configuration>
+			</plugin>
+			<!--  tell the compiler we can use 1.5 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+		</plugins>
+	</build>
+	
+	<!--  profiles (with activation per platform) -->
+	<profiles>
+		<profile>
+			<id>gwt-dev-windows</id>
+			<properties>
+				<platform>windows</platform>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<os>
+					<family>windows</family>
+				</os>
+			</activation>
+		</profile>
+		<profile>
+			<id>gwt-dev-mac</id>
+			<properties>
+				<platform>mac</platform>
+			</properties>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<os>
+					<family>mac</family>
+				</os>
+			</activation>
+		</profile>
+		<profile>
+			<id>gwt-dev-linux</id>
+			<properties>
+				<platform>linux</platform>
+			</properties>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<os>
+					<name>linux</name>
+				</os>
+			</activation>			
+		</profile>
+	</profiles>
+</project>

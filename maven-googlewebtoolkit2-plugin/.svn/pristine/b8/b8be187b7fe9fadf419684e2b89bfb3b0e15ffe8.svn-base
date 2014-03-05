@@ -1,0 +1,39 @@
+body {
+  background-color: white;
+  color: black;
+  font-family: Arial, sans-serif;
+  font-size: smaller;
+  margin: 20px 20px 20px 20px;
+}
+
+code {
+  font-size: small;
+}
+
+a:visited {
+  color: darkblue;
+}
+
+a {
+  color: darkblue;
+}
+
+.main-panel {
+  background-color: #cccccc;
+  border 2px solid #2f2f2f;
+  padding: 10px;
+  margin: 5px;
+}
+
+.table-style0 {
+  background-color: #8B4789;
+  color: #ffffff;
+  padding: 2px;
+}
+
+.table-style1 {
+  background-color: #483d8b;
+  color: #ffffff;
+  padding: 2px;
+}
+

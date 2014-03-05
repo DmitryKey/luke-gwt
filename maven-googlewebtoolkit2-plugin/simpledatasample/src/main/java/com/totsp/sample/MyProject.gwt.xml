@@ -1,0 +1,13 @@
+<module>
+
+    <!-- Inherit the core Web Toolkit stuff.  -->
+    <inherits name='com.google.gwt.user.User'/>
+
+    <!-- Specify the app entry point class. -->
+    <entry-point class='com.totsp.sample.client.MyProjectEntryPoint'/>
+  
+    <!-- example service servlet -->
+    <servlet path="/MyService" class="com.totsp.sample.server.MyServiceImpl"/>    
+    
+    <stylesheet src='myproject.styles.css'/>
+</module>

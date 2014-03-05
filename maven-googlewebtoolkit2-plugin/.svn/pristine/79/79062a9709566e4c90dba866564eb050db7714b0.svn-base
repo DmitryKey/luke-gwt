@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+	<!--
+		Tomcat context.xml file for 6.x (NOT for the GWT shell, won't work
+		there - shell needs old style 5.0.x format - see contextGwtShell.xml).
+	-->
+<Context privileged="true" antiResourceLocking="false"
+	antiJARLocking="false" debug="1" reloadable="true" path="">
+	<Resource name="jdbc/DataSource"
+		factory="org.apache.commons.dbcp.BasicDataSourceFactory" username="sa"
+		password="" type="javax.sql.DataSource" auth="Container"
+		driverClassName="org.hsqldb.jdbcDriver" url="jdbc:hsqldb:mem:testdb" />
+</Context>

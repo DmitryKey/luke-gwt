@@ -1,0 +1,1 @@
+mvn gwt:run 
